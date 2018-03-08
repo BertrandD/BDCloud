@@ -11,8 +11,12 @@ class App extends Component {
         return (
             <div className="App">
                 <Route exact path="/" component={Home}/>
-                <Route path="/" render={(props) => {
+                <Route path="/" render={() => {
                     const p = window.location.pathname;
+                    if (p==="/") return (
+                        <div>
+                        </div>
+                    );
                     switch (path.extname(p)) {
                         case '.mp4':
                             return (
