@@ -1,5 +1,7 @@
 # BDCloud
 
+[![Build Status](https://travis-ci.org/BertrandD/BDCloud.svg?branch=master)](https://travis-ci.org/BertrandD/BDCloud)
+
 A personal cloud storage solution, that fit what I need.
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
