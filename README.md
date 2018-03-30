@@ -8,6 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Table of Contents
 
+- [Data structure](#data-structure)
 - [Available Scripts](#available-scripts)
   - [npm start](#npm-start)
   - [npm test](#npm-test)
@@ -28,6 +29,90 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   - [Coverage Reporting](#coverage-reporting)
   - [Continuous Integration](#continuous-integration)
  
+## Data structure
+
+This solution is database-free, in order to be easier to setup. All the datas are stored with JSON on the server. In the config.js you should edit the conf.staticUrl value. It is the value where your files, and data-structure informations are stored.
+
+For example, we store all our data on a local server accessible via `http://localhost:5000` (with cors enabled)
+
+And the BDCloud project is accessible via `http://localhost`
+
+Here is the example folder structure :
+
+```
+/
+  share/
+    essay.doc
+  photos/
+    monday-16/
+      photos/
+        IMG01.PNG
+        IMG02.PNG
+        IMG03.PNG
+      data.json
+    tuesday-17/
+      photos/
+        IMG04.PNG
+        IMG05.PNG
+        IMG06.PNG
+      data.json
+    my-weekend-with-bob/
+      photos/
+        IMG07.PNG
+        IMG08.PNG
+        IMG09.PNG
+      data.json
+```
+
+You can share each file alone. For example :
+
+A file 
+`http://localhost/share/essay.doc`
+
+An image 
+`http://localhost/photos/monday-16/photos/IMG01.PNG`
+
+Or anythind else...
+
+But if you want to share more than 1 file with a single URL, it is also possible. Currently only photos & audio files are supported.
+
+In the example, there is 3 photos albums that can be shared : `http://localhost/photos/monday-16`, `http://localhost/photos/monday-17` and `http://localhost/photos/my-weekend-with-bob`
+
+To enable this, you have to add a `data.json` file well structured.
+
+All the `data.json` files should not be created manually but by a script. This script will be open-sourced shortly.
+
+### Photos
+
+The `data.json` file :
+
+```json
+{
+    "type": "photos", // required
+    "title": "2011-03-02 Journée Chant Lit St Antoine", // the title of your album
+    "description": "lorem ipsum dolor sit amet", // a description if you want it
+    "rootURL": "http://localhost:5000/", // the root url where your files are stored 
+    "files": [
+        {
+            "path": "photos/monday-16/photos/IMG01.PNG", // the path of your image on the server (full url : rootURL + path)
+            "author": "Bob", // the author of the photo to be displayed on the bottom of the photo
+            "src": {
+                "thumb": "thumb_200/IMG01.PNG", // the 200px thumb of the image
+            },
+            "size": 2.798389, // file size in MB
+            "birthtime": "2018-03-05T17:46:12.584Z",
+            "type": "PNG"
+        }
+    ]
+}
+
+```
+
+### Records
+
+TODO
+
+
 ## Available Scripts
 
 In the project directory, you can run:
