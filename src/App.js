@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import config from './config.js';
 import './App.css';
-import { Photo, Video, Gallery } from 'react-gallery';
+import { Photo, Video, Gallery, Records } from 'react-gallery';
 import Home from './components/home/Home';
-import Records from './components/records/Records';
 import path from 'path';
 
 class App extends Component {
